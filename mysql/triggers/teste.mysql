@@ -1,0 +1,22 @@
+select * from EsqueciSenha;
+SELECT DATE_ADD(time(current_time()), INTERVAL 2 MINUTE);
+Select u.UsuarioID from Usuario u; 
+UPDATE EsqueciSenha SET Expirado = 1, Acao = 'Expirado' WHERE HoraExpira < time(current_time());
+UPDATE `portfoliomath`.`EsqueciSenha` SET Expirado = 1 WHERE es.HoraExpira < NOW();
+INSERT INTO EsqueciSenha (UsuarioID, Apelido, Email, NovaSenha, resetLinkToken, Usado, HoraExpira) VALUES ((SELECT UsuarioID FROM Usuario WHERE Email = "Matheusszoke@gmail.com"), (SELECT Apelido FROM Usuario WHERE Email = "Matheusszoke@gmail.com"), 
+        (SELECT Email FROM Usuario WHERE Email = "Matheusszoke@gmail.com"), null, 12345, 0, time(current_time()) + interval 2 minute);
+
+UPDATE EsqueciSenha SET Expirado = 1, Acao = 'Expirado' WHERE TIME(CURRENT_TIME()) > HoraExpira;
+
+SELECT allCodes FROM EsqueciSenha WHERE Acao = 'Aguardando' AND Usado = 0 LIMIT 1
+
+select now() + INTERVAL 2 minute
+
+select timestamp() + interval 2 minute;
+SELECT time(current_time()) + interval 2 minute;
+DATE_FORMAT('YYYY-MM-DD hh:mm:ss'); 
+SELECT TIME_TO_SEC('00:2:00');
+
+delete from EsqueciSenha where UsuarioID in (21)
+
+SELECT code1 FROM EsqueciSenha WHERE Email = 'Matheusszoke@gmail.com' AND Acao = 'Aguardando' AND Usado = 0 LIMIT 1

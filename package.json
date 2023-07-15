@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@toast-ui/react-image-editor": "^3.15.2",
+    "react-device-detect": "^2.2.2"
+  }
+}

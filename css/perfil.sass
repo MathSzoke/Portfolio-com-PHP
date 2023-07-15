@@ -1,0 +1,279 @@
+$color-neutral-light: #b0b5b8
+$color-neutral-medium: #545e61
+
+
+html
+  box-sizing: border-box
+  background-color: #2d3437
+  font-size: 62.5%
+  font-family: Roboto, Helvetica, sans-serif
+  overflow: hidden
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+
+  
+*, *::before, *::after
+  box-sizing: inherit
+
+
+html, body
+  height: 100%
+
+  
+.sr-only
+  position: absolute
+  width: 1px
+  height: 1px
+  padding: 0
+  margin: -1px
+  overflow: hidden
+  clip: rect(0, 0, 0, 0)
+  border: 0
+  
+  
+#app
+  display: flex
+  flex: 1 1 auto
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  
+  
+.morph-button-to-modal-wrapper
+  position: relative
+  overflow: visible
+  top: 80vh
+  left: 10vw
+  width: 3.2rem
+  height: 3.2rem
+  
+
+.morph-button-to-modal
+  position: relative
+  top: 0
+  bottom: 0
+  overflow: hidden
+  min-width: 3.2rem
+  min-height: 3.2rem
+  width: 3.2rem
+  //max-width: 3.2rem
+  max-height: 3.2rem
+  border: 0.2rem solid #fff
+  border-radius: 50%
+  background: transparent
+  color: #fff
+  will-change: content, width, max-width, max-height, transform
+  transition-property: width, max-width, max-height, border-color, border-radius, background-color
+  transition-duration: 350ms, 350ms, 350ms, 200ms, 200ms, 400ms
+  transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96)
+  transition-delay: 100ms, 100ms, 200ms, 400ms, 400ms, 200ms
+  //transition-delay: 200ms
+    
+  &.open
+    z-index: 1000
+    width: 90rem
+    max-width: calc(100vw - 2rem)
+    max-height: calc(100vh - 2rem)
+    border-color: transparent
+    border-radius: 1rem
+    background-color: #394144
+    transition-delay: 200ms, 200ms, 200ms, 200ms, 200ms, 200ms
+    
+  button
+    appearence: none
+    background: none
+    border: none
+    padding: 0
+    
+  .morph-button-enter
+    opacity: 0.01
+    
+    &.morph-button-enter-active
+      opacity: 1
+      transition-property: opacity
+      transition-duration: 300ms
+      transition-timing-function: ease-out
+      transition-delay: 400ms
+      
+  .morph-button-leave
+    opacity: 1
+  
+    &.morph-button-leave-active
+      opacity: 0
+      transition: opacity 200ms ease-out
+     
+  .morph-modal-enter
+    opacity: 0.01
+    
+    &.morph-modal-enter-active
+      opacity: 1
+      transition-property: opacity 320ms ease-out 500ms
+      
+  .morph-modal-leave
+    opacity: 1
+  
+    &.morph-modal-leave-active
+      opacity: 0
+      transition: opacity 200ms ease-out
+    
+  .morph-button
+    position: absolute
+    width: 100%
+    height: 100%
+
+  .morph-modal-container
+    display: flex
+    flex-flow: column nowrap
+    align-items: stretch
+    position: relative
+    padding: 2rem
+    
+  .morph-modal-title
+    flex: 0 0 auto
+    overflow: hidden
+    padding-bottom: 2rem
+    border-bottom: 0.1rem solid $color-neutral-medium
+    font-size: 2rem
+    font-weight: 500
+    white-space: nowrap
+    text-overflow: ellipsis
+    
+  .btn-close
+    position: absolute
+    top: 1.4rem
+    right: 2rem
+    color: $color-neutral-light
+    font-size: 2.4rem
+    
+  .morph-modal-body
+    flex: 0 1 auto
+    overflow-y: auto
+    max-height: calc(100vh - 14rem)
+    font-size: 1.5rem
+    
+    
+    
+    
+.device-entry-info-modal
+  .morph-modal-enter
+    .device-details-info
+      > *
+        border-color: transparent
+      
+        > *
+          opacity: 0.01
+    
+    &.morph-modal-enter-active
+      .device-details-info
+        > *
+          border-left-color: $color-neutral-medium
+          transition: border-color 250ms ease-in 500ms
+        
+          > *
+            opacity: 1
+            transition: opacity 300ms ease-in 420ms
+            
+            @for $i from 1 through 24
+              &:nth-child(#{$i})
+                transition-delay: ($i * 32) + 420ms
+        
+    //.morph-modal-leave
+    //  &.morph-leave-active
+      
+  .modal-button
+    font-size: 3.2rem
+  
+  .info-key-value
+    display: flex
+    justify-content: space-between
+    white-space: nowrap
+    line-height: 2.5
+    
+    &, .info-key, .info-value
+      margin: 0
+    
+    .info-key
+      flex: 0 1 auto
+      overflow: hidden
+      padding-right: 1em
+      color: #fff
+      font-weight: 600
+      text-overflow: ellipsis
+    
+    .info-value
+      flex: 0 0 auto
+      text-align: right
+      color: $color-neutral-light
+      
+  .device-details-info
+    display: flex
+    flex-flow: row nowrap
+    justify-content: space-between
+    width: 100%
+    max-width: 100%
+    margin: 3rem 0
+    
+    > *
+      flex: 0 1 33.33333%
+      max-width: 33.33333%
+      padding: 0 3rem
+      border-left: 0.1rem solid $color-neutral-medium
+    
+      &:first-of-type
+        border: none
+        padding-left: 0
+    
+      &:last-of-type
+        padding-right: 0
+    
+  .sub.info-key::before
+    content: "\21B3"
+    margin-right: 0.5em
+    font-family: sans-serif
+    color: $color-neutral-light
+    
+  .device-details-info-header
+    display: flex
+    flex-flow: row nowrap
+    align-content: center
+    margin-bottom: 4rem
+    padding: 2.4rem 0 1.8rem
+    border-bottom: 0.1rem solid $color-neutral-medium
+    
+    .device-image
+      margin-right: 2.8rem
+      color: #36d3b4
+      font-size: 6.4rem
+      
+    .device-name, .device-online-status
+      display: block
+      
+    .device-name
+      font-size: 2.4rem
+      font-weight: 500
+      
+    .device-online-status
+      font-style: italic
+      
+      &::before
+        content: "("
+      
+      &::after
+        content: ")"
+  
+  .device-volume
+    display: inline-block
+    width: 100%
+    break-inside: avoid
+      
+  // to save time color these
+  .device-os-and-connection
+    .fa-check
+      color: #24E873
+      
+    .fa-times
+      color: #FF005A
+      
+      

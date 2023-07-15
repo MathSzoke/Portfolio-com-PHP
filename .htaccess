@@ -1,0 +1,10 @@
+#------------------------------------------------------------------------#
+                    # REMOVER EXTENSÃO .php DO URL #
+#------------------------------------------------------------------------#
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L] 
+#------------------------------------------------------------------------#
+# DO NOT REMOVE THIS LINE AND THE LINES BELOW ERRORPAGEID:Yl8RTfgX3M
+ErrorDocument 404 /error404.php
+# DO NOT REMOVE THIS LINE AND THE LINES ABOVE Yl8RTfgX3M:ERRORPAGEID

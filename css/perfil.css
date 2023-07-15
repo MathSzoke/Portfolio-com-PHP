@@ -1,0 +1,446 @@
+@charset "UTF-8";
+html {
+  background-color: #2d3437;
+  font-size: 62.5%;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+span
+{
+    color: var(--text-black-900);
+}
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.morph-button-to-modal-wrapper {
+    position: absolute;
+    overflow: visible;
+    top: 32px;
+    right: 65px;
+    width: 13rem;
+    height: 2rem;
+}
+
+.morph-button-to-modal {
+    position: relative;
+    overflow: hidden;
+    min-width: 3.2rem;
+    min-height: 2.2rem;
+    width: 13.2rem;
+    max-height: 3.2rem;
+    border: 1px solid var(--skin-color);
+    background: transparent;
+    color: #fff;
+    will-change: content, width, max-width, max-height, transform;
+    -webkit-transition-property: width, max-width, max-height, border-color, border-radius, background-color;
+    transition-property: width, max-width, max-height, border-color, border-radius, background-color;
+    -webkit-transition-duration: 350ms, 350ms, 350ms, 200ms, 200ms, 400ms;
+    transition-duration: 350ms, 350ms, 350ms, 200ms, 200ms, 400ms;
+    -webkit-transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    transition-timing-function: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+    -webkit-transition-delay: 100ms, 100ms, 200ms, 400ms, 400ms, 200ms;
+    transition-delay: 100ms, 100ms, 200ms, 400ms, 400ms, 200ms;
+}
+.morph-button-to-modal.open {
+    z-index: 1000;
+    width: 90rem;
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 2rem);
+    border-radius: 1rem;
+    background-color: var(--bg-black-600);
+    -webkit-transition-delay: 200ms, 200ms, 200ms, 200ms, 200ms, 200ms;
+    transition-delay: 200ms, 200ms, 200ms, 200ms, 200ms, 200ms;
+}
+.morph-button-to-modal button {
+  appearence: none;
+  background: none;
+  border: none;
+  padding: 0;
+}
+#btn {
+  font-size: 16px;
+  font-family: sans-serif;
+  font-weight: 500;
+  padding: 12px 35px;
+  color: white;
+  border-radius: 40px;
+  display: inline-block;
+  white-space: nowrap;
+  border: none;
+  background: var(--skin-color);
+  transition: all 0.3s ease;
+  user-select: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 30px;
+}
+  #btn:hover
+  {
+      transform: scale(1.05);
+  }
+.morph-button-to-modal .morph-button-enter {
+  opacity: 0.01;
+}
+.morph-button-to-modal .morph-button-enter.morph-button-enter-active {
+  opacity: 1;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+  -webkit-transition-delay: 400ms;
+          transition-delay: 400ms;
+}
+.morph-button-to-modal .morph-button-leave {
+  opacity: 1;
+}
+.morph-button-to-modal .morph-button-leave.morph-button-leave-active {
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease-out;
+  transition: opacity 200ms ease-out;
+}
+.morph-button-to-modal .morph-modal-enter {
+  opacity: 0.01;
+}
+.morph-button-to-modal .morph-modal-enter.morph-modal-enter-active {
+  opacity: 1;
+  -webkit-transition-property: opacity 320ms ease-out 500ms;
+  transition-property: opacity 320ms ease-out 500ms;
+}
+.morph-button-to-modal .morph-modal-leave {
+  opacity: 1;
+}
+.morph-button-to-modal .morph-modal-leave.morph-modal-leave-active {
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease-out;
+  transition: opacity 200ms ease-out;
+}
+.morph-button-to-modal .morph-button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.morph-button-to-modal .morph-button:hover
+{
+    background: #474c445e;
+}
+.morph-button-to-modal .morph-modal-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column nowrap;
+      flex-flow: column nowrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  position: relative;
+  padding: 2rem;
+}
+.morph-button-to-modal .morph-modal-title {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  overflow: hidden;
+  padding-bottom: 2rem;
+  border-bottom: 0.1rem solid #545e61;
+  font-size: 2rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.morph-button-to-modal .btn-close {
+  position: absolute;
+  top: 1.4rem;
+  right: 2rem;
+  color: #b0b5b8;
+  font-size: 2.4rem;
+  cursor: pointer;
+}
+.morph-button-to-modal .morph-modal-body {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 14rem);
+  font-size: 1.5rem;
+}
+
+.device-entry-info-modal .morph-modal-enter .device-details-info > * {
+  border-color: transparent;
+}
+.device-entry-info-modal .morph-modal-enter .device-details-info > * > * {
+  opacity: 0.01;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * {
+  border-left-color: #545e61;
+  -webkit-transition: border-color 250ms ease-in 500ms;
+  transition: border-color 250ms ease-in 500ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > * {
+  opacity: 1;
+  -webkit-transition: opacity 300ms ease-in 420ms;
+  transition: opacity 300ms ease-in 420ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(1) {
+  -webkit-transition-delay: 452ms;
+          transition-delay: 452ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(2) {
+  -webkit-transition-delay: 484ms;
+          transition-delay: 484ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(3) {
+  -webkit-transition-delay: 516ms;
+          transition-delay: 516ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(4) {
+  -webkit-transition-delay: 548ms;
+          transition-delay: 548ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(5) {
+  -webkit-transition-delay: 580ms;
+          transition-delay: 580ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(6) {
+  -webkit-transition-delay: 612ms;
+          transition-delay: 612ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(7) {
+  -webkit-transition-delay: 644ms;
+          transition-delay: 644ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(8) {
+  -webkit-transition-delay: 676ms;
+          transition-delay: 676ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(9) {
+  -webkit-transition-delay: 708ms;
+          transition-delay: 708ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(10) {
+  -webkit-transition-delay: 740ms;
+          transition-delay: 740ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(11) {
+  -webkit-transition-delay: 772ms;
+          transition-delay: 772ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(12) {
+  -webkit-transition-delay: 804ms;
+          transition-delay: 804ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(13) {
+  -webkit-transition-delay: 836ms;
+          transition-delay: 836ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(14) {
+  -webkit-transition-delay: 868ms;
+          transition-delay: 868ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(15) {
+  -webkit-transition-delay: 900ms;
+          transition-delay: 900ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(16) {
+  -webkit-transition-delay: 932ms;
+          transition-delay: 932ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(17) {
+  -webkit-transition-delay: 964ms;
+          transition-delay: 964ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(18) {
+  -webkit-transition-delay: 996ms;
+          transition-delay: 996ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(19) {
+  -webkit-transition-delay: 1028ms;
+          transition-delay: 1028ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(20) {
+  -webkit-transition-delay: 1060ms;
+          transition-delay: 1060ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(21) {
+  -webkit-transition-delay: 1092ms;
+          transition-delay: 1092ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(22) {
+  -webkit-transition-delay: 1124ms;
+          transition-delay: 1124ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(23) {
+  -webkit-transition-delay: 1156ms;
+          transition-delay: 1156ms;
+}
+.device-entry-info-modal .morph-modal-enter.morph-modal-enter-active .device-details-info > * > *:nth-child(24) {
+  -webkit-transition-delay: 1188ms;
+          transition-delay: 1188ms;
+}
+.device-entry-info-modal .modal-button {
+  font-size: 3.2rem;
+}
+.device-entry-info-modal .info-key-picture {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  white-space: nowrap;
+  line-height: 2.5;
+  width: 150px;
+  background: red;
+  height: 150px;
+  border-radius: 50%;
+  display: flex;
+}
+.device-entry-info-modal .info-key-value, .device-entry-info-modal .info-key-value .info-key, .device-entry-info-modal .info-key-value .info-value {
+  margin: 0;
+}
+.device-entry-info-modal .info-key-value .info-key {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  overflow: hidden;
+  padding-right: 1em;
+  color: var(--text-black-500);
+  font-weight: 600;
+  text-overflow: ellipsis;
+}
+.device-entry-info-modal .info-key-value .info-value {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  text-align: right;
+  color: var(--text-black-700);
+}
+.device-entry-info-modal .device-details-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  margin: 3rem 0;
+}
+.device-entry-info-modal .device-details-info > * {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 100%;
+          flex: 0 1 100%;
+  max-width: 100%;
+  padding: 0 3rem;
+  border-left: 0.1rem solid #545e61;
+}
+.device-entry-info-modal .device-details-info > *:first-of-type {
+  border: none;
+  padding-left: 0;
+}
+.device-entry-info-modal .device-details-info > *:last-of-type {
+  padding-right: 0;
+}
+.device-entry-info-modal .sub.info-key::before {
+  content: "↳";
+  margin-right: 0.5em;
+  font-family: sans-serif;
+  color: #b0b5b8;
+}
+.device-entry-info-modal .device-details-info-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin-bottom: 4rem;
+  padding: 2.4rem 0 1.8rem;
+  border-bottom: 0.1rem solid #545e61;
+}
+.device-entry-info-modal .device-details-info-header .device-image {
+  margin-right: 2.8rem;
+  color: var(--skin-color);
+  font-size: 6.4rem;
+}
+.device-entry-info-modal .device-details-info-header .device-name, .device-entry-info-modal .device-details-info-header .device-online-status {
+  display: block;
+}
+.device-entry-info-modal .device-details-info-header .device-name {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+.device-entry-info-modal .device-details-info-header .device-online-status {
+  font-style: italic;
+}
+.device-entry-info-modal .device-details-info-header .device-online-status::before {
+  content: "(";
+}
+.device-entry-info-modal .device-details-info-header .device-online-status::after {
+  content: ")";
+}
+.device-entry-info-modal .device-volume {
+  display: inline-block;
+  width: 100%;
+  -webkit-column-break-inside: avoid;
+     page-break-inside: avoid;
+          break-inside: avoid;
+          display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.device-entry-info-modal .device-os-and-connection .fa-check {
+  color: #24E873;
+}
+.device-entry-info-modal .device-os-and-connection .fa-times {
+  color: #FF005A;
+}
+.editarSenha
+{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+@media(max-width:730)
+{
+  #btn,
+  .device-os-and-connection,
+  .device-entry-info-modal .device-details-info > *:first-of-type 
+  {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
